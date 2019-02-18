@@ -11,3 +11,7 @@ $(prog): $(obj)
 .PHONY: clean
 clean:
 	rm -f $(obj) $(prog)
+
+install:$(prog)
+	mkdir -p ~/.local/bin
+	cp tasking ~/.local/bin
