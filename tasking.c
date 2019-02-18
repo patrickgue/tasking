@@ -207,15 +207,15 @@ filter_list_by_state(task_list list, task_state state)
 
 
 void print_task(task tsk, bool prnt_state) {
-  printf("\n(%i) %s\n\n%s\n", tsk.id, tsk.title, tsk.description);
+  printf("\n(ID:%i) %s\n\n%s\n", tsk.id, tsk.title, tsk.description);
   if(prnt_state) {
     switch(tsk.state) {
     case new:
-      printf("State: New\n"); break;
+      printf("\nState: New\n"); break;
     case in_progress:
-      printf("State: In Progress\n"); break;
+      printf("\nState: In Progress\n"); break;
     case done:
-      printf("State: Done\n"); break;
+      printf("\nState: Done\n"); break;
     }
   }
 }
