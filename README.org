@@ -3,3 +3,15 @@
 * Summary
 
 /Tasking/ is a simple task manager writen in C.
+
+
+* Supported systems
+
+/Tasking/ was successfuly tested on following systems:
+
+
+|---------+-------------------------|
+| FreeBSD |                    12.0 |
+| macOS   | 10.14.3 (Darwin 18.2.0) |
+|---------+-------------------------|
+
