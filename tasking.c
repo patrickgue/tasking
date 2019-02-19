@@ -2,6 +2,8 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <math.h>
+
 #include "tasking.h"
 #include "fileio.h"
 #include "util.h"
@@ -207,15 +209,22 @@ filter_list_by_state(task_list list, task_state state)
 
 
 void print_task(task tsk, bool prnt_state) {
-  printf("\n(ID:%i) %s\n\n%s\n", tsk.id, tsk.title, tsk.description);
+  int index = 0;
+  char spaces[10] = "|   ";
+
+  for(index = 0; index < floor(log10(tsk.id)); index++) {
+    sprintf(spaces, "%s ", spaces);
+  }
+  
+  printf("\n(%i) %s\n\n%s%s\n", tsk.id, tsk.title, spaces, tsk.description);
   if(prnt_state) {
     switch(tsk.state) {
     case new:
-      printf("\nState: New\n"); break;
+      printf("\n%sState: New\n", spaces); break;
     case in_progress:
-      printf("\nState: In Progress\n"); break;
+      printf("\n%sState: In Progress\n", spaces); break;
     case done:
-      printf("\nState: Done\n"); break;
+      printf("\n%sState: Done\n", spaces); break;
     }
   }
 }
