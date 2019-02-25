@@ -62,7 +62,7 @@ main(int argc, char** argv)
 	print_task_list(filter_list_by_state(list, done), false);
       }
     } else if(is_command(input, "c", "create")) {
-      char title[64], description[256];
+      char title[TITLE_SIZE], description[DESCRIPTION_SIZE];
       printf("Title: ");
       getchar();
       scanf("%[^\n]s", title);
@@ -111,8 +111,8 @@ load_task_list(char *path)
 
   for(line = strtok_r(file_text, linesep, &brkt); line; line = strtok_r(NULL, linesep, &brkt)) {
     int id;
-    char title[64];
-    char description[256];
+    char title[TITLE_SIZE];
+    char description[DESCRIPTION_SIZE];
     task_state state;
     
     word = strtok_r(line, wordsep, &brkt2);
@@ -144,7 +144,7 @@ write_task_list(char* path, task_list list)
   }
   
   int index;
-  char* output_text = malloc(sizeof(char) * list.task_count * (1 + 64 + 256 + 1));
+  char* output_text = malloc(sizeof(char) * list.task_count * (1 + TITLE_SIZE + DESCRIPTION_SIZE + 1));
   strcpy(output_text, "");
   for(index = 0; index < list.task_count; index++) {
     sprintf(output_text,
@@ -163,7 +163,7 @@ write_task_list(char* path, task_list list)
 }
 
 task
-create_task(int id, char title[64], char description[256], task_state state)
+create_task(int id, char title[TITLE_SIZE], char description[DESCRIPTION_SIZE], task_state state)
 {
   task *newtask = malloc(sizeof(task));
   newtask->id = id;
